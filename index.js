@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const shape = require('./lib/shapes')
 
 //ARRAY OF QUESTIONS:
 const questions = [
@@ -11,17 +10,28 @@ const questions = [
 ];
 
 
-//TODO: GENERATE THE SVG FILE
-//TODO: WRITE THE SVG FILE
-//TODO: INITIALIZE THE PROGRAM
+//GENERATE THE SVG FILE
+const svgFile = ({text, textColor, shape, shapeColor}) =>{
+  const generatedShape = require('./lib/' + shape);
+  const newLogo = new generatedShape(text, textColor, shapeColor)
+  const logoInfo = newLogo.svgTemplate();
+  writeFile(logoInfo);
+}
 
-inquirer
-.prompt(
-    questions
-)
-.then((answers) =>{
-    fs.writeFile('logo.svg', answers, (err) =>
-        err ? console.log(err) : console.log('Success!')
+//WRITE THE SVG FILE
+function writeFile(logoInfo){
+  fs.writeFile('logo.svg', logoInfo, (err) =>
+        err ? console.log(err) : console.log('file logo.svg has been created succesfully')
       );
-      console.log('file logo.svg has been created')
-})
+
+}
+
+//INITIALIZE THE PROGRAM
+function init(){
+  inquirer
+    .prompt(questions)
+    .then((answers)=>{
+      svgFile(answers)
+    })
+  }
+  init();
