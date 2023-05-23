@@ -25,7 +25,7 @@ To install dependencies use the following command : npm i
 Initialize the project by typing node index.js in the console and follow along with the prompts.
 Here is a demo:
 
-
+[demo.webm](https://github.com/Alejandro-jpeg/Challenge-10-SVG-Logo_Maker/assets/67748666/2df2a20a-f3d6-48a7-8fe5-6ba8a6dfdd67)
 
 ## Contribution Guidelines
 
